@@ -77,7 +77,7 @@ function App() {
             Designation:
             <input
               type="text"
-              name="designation"
+              name="Designation"
               value={formData.designation}
               onChange={handleChange}
               required
@@ -90,7 +90,7 @@ function App() {
             Salary:
             <input
               type="number"
-              name="salary"
+              name="Salary"
               value={formData.salary}
               onChange={handleChange}
               required
