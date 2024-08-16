@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './App.css';
 
 function App() {
-  
   const [formData, setFormData] = useState({
     name: '',
     age: '',
     designation: '',
     salary: ''
   });
+
   const [responseMessage, setResponseMessage] = useState('');
 
-  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -19,11 +19,9 @@ function App() {
     });
   };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    
+
     const API_URL = 'https://sheet.best/api/sheets/3523a7d3-8739-4b9e-8a18-4ece0f82f35e';
 
     try {
@@ -43,66 +41,54 @@ function App() {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px' }}>
+    <div className="form-container">
       <h2>Employee Details Form</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '10px' }}>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              style={{ marginLeft: '10px', padding: '5px', width: '100%' }}
-            />
-          </label>
+        <div className="form-group">
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>
-            Age:
-            <input
-              type="number"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-              required
-              style={{ marginLeft: '10px', padding: '5px', width: '100%' }}
-            />
-          </label>
+        <div className="form-group">
+          <label>Age:</label>
+          <input
+            type="number"
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>
-            Designation:
-            <input
-              type="text"
-              name="Designation"
-              value={formData.designation}
-              onChange={handleChange}
-              required
-              style={{ marginLeft: '10px', padding: '5px', width: '100%' }}
-            />
-          </label>
+        <div className="form-group">
+          <label>Designation:</label>
+          <input
+            type="text"
+            name="designation"
+            value={formData.designation}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>
-            Salary:
-            <input
-              type="number"
-              name="Salary"
-              value={formData.salary}
-              onChange={handleChange}
-              required
-              style={{ marginLeft: '10px', padding: '5px', width: '100%' }}
-            />
-          </label>
+        <div className="form-group">
+          <label>Salary:</label>
+          <input
+            type="number"
+            name="salary"
+            value={formData.salary}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <button type="submit" style={{ padding: '10px', width: '100%', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '5px' }}>
+        <button type="submit" className="submit-button">
           Submit
         </button>
       </form>
-      {responseMessage && <p>{responseMessage}</p>}
+      {responseMessage && <p className="response-message">{responseMessage}</p>}
     </div>
   );
 }
